@@ -1,0 +1,165 @@
+---
+swagger: "2.0"
+info:
+  description: "API de Lasermed para su sistema de gestión"
+  version: "0.0.1"
+  title: "Lasermed API"
+  contact:
+    name: "Fernando Távora"
+    url: "http://www.fernandotavora.com.ar"
+    email: "fernando@tavora.com.ar"
+  license:
+    name: "Apache License 2.0"
+host: "api.fernandotavora.com.ar"
+basePath: "/api"
+schemes:
+- "http"
+- "https"
+consumes:
+- "application/json"
+- "text/plain; charset=utf-8"
+produces:
+- "application/json"
+paths:
+  /agendas:
+    get:
+      operationId: "agendasGET"
+      parameters: []
+      responses:
+        200:
+          description: "Listado de agendas"
+          schema:
+            $ref: "#/definitions/agenda"
+      x-swagger-router-controller: "Default"
+  /clientes:
+    get:
+      operationId: "clientesGET"
+      parameters: []
+      responses:
+        200:
+          description: "Listado de Clientes"
+          schema:
+            $ref: "#/definitions/cliente"
+      x-swagger-router-controller: "Default"
+  /obras_sociales:
+    get:
+      operationId: "obras_socialesGET"
+      parameters: []
+      responses:
+        200:
+          description: "Listado de Obras Sociales"
+          schema:
+            $ref: "#/definitions/obra_social"
+      x-swagger-router-controller: "Default"
+  /prestaciones:
+    get:
+      operationId: "prestacionesGET"
+      parameters: []
+      responses:
+        200:
+          description: "Listado de Prestaciones"
+          schema:
+            $ref: "#/definitions/prestacion"
+      x-swagger-router-controller: "Default"
+  /presupuestos:
+    get:
+      operationId: "presupuestosGET"
+      parameters: []
+      responses:
+        200:
+          description: "Listado de presupuestos"
+          schema:
+            $ref: "#/definitions/presupuesto"
+      x-swagger-router-controller: "Default"
+definitions:
+  cliente:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+      nombre:
+        type: "string"
+      apellido:
+        type: "string"
+      email:
+        type: "string"
+      dni:
+        type: "integer"
+        format: "int32"
+  obra_social:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+      nombre:
+        type: "string"
+  prestacion:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+        description: "El ID de la prestación"
+      nombre:
+        type: "string"
+      precios:
+        type: "array"
+        items:
+          $ref: "#/definitions/prestacion_precios"
+      esTecnologia:
+        type: "boolean"
+      parentPrestacion:
+        type: "string"
+  agenda:
+    type: "object"
+    properties:
+      dia:
+        type: "number"
+        format: "date"
+      medico:
+        type: "string"
+        description: "El ID del médico"
+      prestacion:
+        type: "string"
+        description: "El ID de prestación"
+      subprestación:
+        type: "string"
+        description: "El ID de prestación con parent"
+      tecnologia:
+        type: "string"
+        description: "El ID de prestacion esTecnologia"
+      sucursal:
+        type: "string"
+        description: "Nombre de la sucursal"
+  presupuesto:
+    type: "object"
+    properties:
+      prestacion:
+        type: "string"
+        description: "El ID de la prestación"
+      subprestacion:
+        type: "string"
+        description: "El ID de la subprestación"
+      forma_pago:
+        type: "string"
+        enum:
+        - "Efectivo"
+        - "Tarjeta"
+      mes:
+        type: "string"
+      paciente:
+        type: "string"
+        description: "El ID del paciente"
+      usuario:
+        type: "string"
+        description: "El ID del usuario que ingresó el presupuesto"
+  prestacion_precios:
+    properties:
+      precio_unidad:
+        type: "integer"
+        format: "double"
+      fecha_desde:
+        type: "number"
+        format: "date"
+      fecha_hasta:
+        type: "number"
+        format: "date"

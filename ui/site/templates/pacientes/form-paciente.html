@@ -1,0 +1,200 @@
+<div class="row" ng-show="formPaciente">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading clearfix">
+                <h3 class="panel-title pull-left">Nuevo Paciente</h3>
+                <button type="button" ng-click="showFormPaciente()" class="close pull-right" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="panel-body">
+                <form role="form" name="formNuevoPaciente" ng-submit="submitNuevoPaciente(paciente, formNuevoPaciente)" novalidate>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="input-group form-group has-feedback" ng-class="{'has-error' : formNuevoPaciente.pacienteNombre.$error.required && (formNuevoPaciente.$submitted || formNuevoPaciente.pacienteNombre.$touched)}">
+                                <span class="input-group-addon" id="pacienteNombreLabel">Nombre</span>
+                                <input type="text" class="form-control" id="pacienteNombre" name="pacienteNombre" aria-describedby="pacienteNombreLabel" ng-model="paciente.nombre" ng-required="true">
+                            </div>
+                            <div ng-show="formNuevoPaciente.$submitted || formNuevoPaciente.pacienteNombre.$touched">
+                                <div ng-show="formNuevoPaciente.pacienteNombre.$error.required">
+                                    <span class="text-danger">Ingrese un nombre</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="input-group form-group has-feedback" ng-class="{'has-error' : formNuevoPaciente.pacienteApellido.$error.required && (formNuevoPaciente.$submitted || formNuevoPaciente.pacienteApellido.$touched)}">
+                                <span class="input-group-addon" id="pacienteApellidoLabel">Apellido</span>
+                                <input type="text" class="form-control" id="pacienteApellido" name="pacienteApellido" aria-describedby="pacienteApellidoLabel" ng-model="paciente.apellido" ng-required="true">
+                            </div>
+                            <div ng-show="formNuevoPaciente.$submitted || formNuevoPaciente.pacienteApellido.$touched">
+                                <div ng-show="formNuevoPaciente.pacienteApellido.$error.required">
+                                    <span class="text-danger">Ingrese un apellido</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="input-group form-group has-feedback" ng-class="{'has-error' : formNuevoPaciente.pacienteDNI.$error.required && (formNuevoPaciente.$submitted || formNuevoPaciente.pacienteDNI.$touched)}">
+                                <span class="input-group-addon" id="pacienteDNILabel">DNI</span>
+                                <input type="number" class="form-control" id="pacienteDNI" name="pacienteDNI" aria-describedby="pacienteDNILabel" ng-model="paciente.dni" ng-required="true">
+                            </div>
+                            <div ng-show="formNuevoPaciente.$submitted || formNuevoPaciente.pacienteDNI.$touched">
+                                <div ng-show="formNuevoPaciente.pacienteDNI.$error.required">
+                                    <span class="text-danger">Ingrese un número de DNI</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="input-group form-group has-feedback" ng-class="{'has-error' : formNuevoPaciente.pacienteFechaNac.$error.required && (formNuevoPaciente.$submitted || formNuevoPaciente.pacienteFechaNac.$touched)}">
+                                <span class="input-group-addon" id="pacienteFechaNacLabel">Nacimiento</span>
+                                <input type="date" class="form-control" id="pacienteFechaNac" name="pacienteFechaNac" aria-describedby="pacienteFechaNacLabel" ng-model="paciente.fecha_nac" ng-required="true">
+                            </div>
+                            <div ng-show="formNuevoPaciente.$submitted || formNuevoPaciente.pacienteFechaNac.$touched">
+                                <div ng-show="formNuevoPaciente.pacienteFechaNac.$error.required">
+                                    <span class="text-danger">Ingrese una fecha de nacimiento</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="input-group form-group has-feedback" ng-class="{'has-error' : formNuevoPaciente.pacienteTelefonoParticular.$error.required && (formNuevoPaciente.$submitted || formNuevoPaciente.pacienteTelefonoParticular.$touched)}">
+                                <span class="input-group-addon" id="pacienteTelefonoParticularLabel">Teléfono <i class="fa fa-home" aria-hidden="true"></i></span>
+                                <input type="number" class="form-control" id="pacienteTelefonoParticular" name="pacienteTelefonoParticular" aria-describedby="pacienteTelefonoParticularLabel" ng-model="paciente.telefono_particular" ng-required="true">
+                            </div>
+                            <div ng-show="formNuevoPaciente.$submitted || formNuevoPaciente.pacienteTelefonoParticular.$touched">
+                                <div ng-show="formNuevoPaciente.pacienteTelefonoParticular.$error.required">
+                                    <span class="text-danger">Ingrese un número de teléfono</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="input-group form-group has-feedback" ng-class="{'has-error' : formNuevoPaciente.pacienteTelefonoMovil.$error.required && (formNuevoPaciente.$submitted || formNuevoPaciente.pacienteTelefonoMovil.$touched)}">
+                                <span class="input-group-addon" id="pacienteTelefonoMovilLabel">Teléfono <i class="fa fa-mobile" aria-hidden="true"></i></span>
+                                <input type="number" class="form-control" id="pacienteTelefonoMovil" name="pacienteTelefonoMovil" aria-describedby="pacienteTelefonoMovilLabel" ng-model="paciente.telefono_movil" ng-required="true">
+                            </div>
+                            <div ng-show="formNuevoPaciente.$submitted || formNuevoPaciente.pacienteTelefonoMovil.$touched">
+                                <div ng-show="formNuevoPaciente.pacienteTelefonoMovil.$error.required">
+                                    <span class="text-danger">Ingrese un número de teléfono</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="input-group form-group has-feedback" ng-class="{'has-error' : formNuevoPaciente.pacienteEmail.$error.required && (formNuevoPaciente.$submitted || formNuevoPaciente.pacienteEmail.$touched)}">
+                                <span class="input-group-addon" id="pacienteEmailLabel">@</span>
+                                <input type="email" class="form-control" id="pacienteEmail" name="pacienteEmail" aria-describedby="pacienteEmailLabel" ng-model="paciente.email" ng-required="true">
+                            </div>
+                            <div ng-show="formNuevoPaciente.$submitted || formNuevoPaciente.pacienteEmail.$touched">
+                                <div ng-show="formNuevoPaciente.pacienteEmail.$error.required">
+                                    <span class="text-danger">Ingrese un email válido</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="input-group form-group">
+                                <span class="input-group-addon" id="pacienteObraSocialLabel">Obra Social</span>
+                                <select class="form-control" ng-options="os.nombre for os in obrasSociales" ng-model="paciente.obra_social.nombre" id="pacienteObraSocial">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="input-group form-group has-feedback" ng-class="{'has-error' : formNuevoPaciente.pacienteCalleNro.$error.required && (formNuevoPaciente.$submitted || formNuevoPaciente.pacienteCalleNro.$touched)}">
+                                <span class="input-group-addon" id="pacienteObraSocialNroLabel">Socio Nro</span>
+                                <input type="number" class="form-control" id="pacienteObraSocialNro" name="pacienteObraSocialNro" aria-describedby="pacienteObraSocialNroLabel" ng-model="paciente.obra_social.nro" ng-required="true">
+                            </div>
+                            <div ng-show="formNuevoPaciente.$submitted || formNuevoPaciente.pacienteObraSocialNro.$touched">
+                                <div ng-show="formNuevoPaciente.pacienteObraSocialNro.$error.required">
+                                    <span class="text-danger">Ingrese un número</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="input-group form-group">
+                                <span class="input-group-addon" id="pacienteObraSocialPlanLabel">Plan</span>
+                                <input type="text" class="form-control" id="pacienteObraSocialPlan" name="pacienteObraSocialPlan" aria-describedby="pacienteObraSocialPlanLabel" ng-model="paciente.obra_social.plan" ng-required="true">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="input-group form-group has-feedback" ng-class="{'has-error' : formNuevoPaciente.pacienteCalle.$error.required && (formNuevoPaciente.$submitted || formNuevoPaciente.pacienteCalle.$touched)}">
+                                <span class="input-group-addon" id="pacienteCalleLabel">Calle</span>
+                                <input type="email" class="form-control" id="pacienteCalle" name="pacienteCalle" aria-describedby="pacienteCalleLabel" ng-model="paciente.domicilio.calle" ng-required="true">
+                            </div>
+                            <div ng-show="formNuevoPaciente.$submitted || formNuevoPaciente.pacienteCalle.$touched">
+                                <div ng-show="formNuevoPaciente.pacienteCalle.$error.required">
+                                    <span class="text-danger">Ingrese una calle</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2">
+                            <div class="input-group form-group has-feedback" ng-class="{'has-error' : formNuevoPaciente.pacienteCalleNro.$error.required && (formNuevoPaciente.$submitted || formNuevoPaciente.pacienteCalleNro.$touched)}">
+                                <span class="input-group-addon" id="pacienteCalleNroLabel">Nro</span>
+                                <input type="number" class="form-control" id="pacienteCalleNro" name="pacienteCalleNro" aria-describedby="pacienteCalleNroLabel" ng-model="paciente.domicilio.nro" ng-required="true">
+                            </div>
+                            <div ng-show="formNuevoPaciente.$submitted || formNuevoPaciente.pacienteCalleNro.$touched">
+                                <div ng-show="formNuevoPaciente.pacienteEmail.$error.required">
+                                    <span class="text-danger">Ingrese un número</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2">
+                            <div class="input-group form-group">
+                                <span class="input-group-addon" id="pacientePisoLabel">Piso</span>
+                                <input type="number" class="form-control" id="pacientePiso" name="pacientePiso" aria-describedby="pacientePisoLabel" ng-model="paciente.domicilio.piso">
+                            </div>
+                        </div>
+                        <div class="col-lg-2">
+                            <div class="input-group form-group">
+                                <span class="input-group-addon" id="pacienteDeptoLabel">Depto</span>
+                                <input type="text" class="form-control" id="pacienteDepto" name="pacienteDepto" aria-describedby="pacienteDeptoLabel" ng-model="paciente.domicilio.depto">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="input-group form-group">
+                                <span class="input-group-addon" id="pacienteProvinciaLabel">Provincia</span>
+                                <select class="form-control" ng-options="p.nombre for p in provincias" ng-model="paciente.domicilio.provincia" id="pacienteProvincia">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="input-group form-group">
+                                <span class="input-group-addon" id="pacienteCiudadLabel">Ciudad</span>
+                                <select class="form-control" ng-model="paciente.domicilio.ciudad" id="pacienteCiudad">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="input-group form-group">
+                                <span class="input-group-addon" id="pacienteCodigoPostalLabel">Código Postal</span>
+                                <input type="text" class="form-control" id="pacienteCodigoPostal" name="pacienteCodigoPostal" aria-describedby="pacienteCodigoPostalLabel" ng-model="paciente.domicilio.codigo_postal">
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <div>
+                                    <button id="btnGuardar" type="submit" class="btn btn-success btn-block">Guardar Nuevo Paciente</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <div>
+                                    <button id="btnBorrar" type="reset" class="btn btn-warning btn-block">Borrar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
