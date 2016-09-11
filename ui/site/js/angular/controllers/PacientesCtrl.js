@@ -3,13 +3,24 @@
  */
 'use strict'
 
-app.controller('PacientesCtrl', function PacientesCtrl($scope){
+app.controller('PacientesCtrl', function PacientesCtrl($scope, dataService){
     $scope.formPaciente = false
     $scope.hayPacientes = false
     $scope.showFormPaciente = function(){
         $scope.formPaciente ? $scope.formPaciente = false : $scope.formPaciente = true
     }
 
+    $scope.paciente = {}
+    $scope.paciente.domicilio = {}
+
+    dataService.getProvincias(function(response){
+        $scope.provincias = response.data;
+        $scope.paciente.domicilio.provincia = $scope.provincias[4]
+    }, function(error){
+        console.log("error provincias")
+    })
+
+    $scope.provincias =
     $scope.obrasSociales = [
         { "nombre": "OSDE" },
         { "nombre": "Swiss Medical" },
@@ -19,9 +30,9 @@ app.controller('PacientesCtrl', function PacientesCtrl($scope){
         { "nombre": "Osdepym" },
         { "nombre": "Accord Salud" }
     ]
-    $scope.paciente = {}
+
     $scope.paciente.obra_social = $scope.obrasSociales[0]
-    $scope.paciente.provincia = $scope.provincias[4]
+
 
     $scope.submitNuevoPaciente = function(paciente, formNuevoPaciente){
         if(formNuevoPaciente.$valid){
