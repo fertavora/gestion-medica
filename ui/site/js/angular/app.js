@@ -6,4 +6,9 @@ var app = angular.module('myApp', ['ngRoute'])
         $scope.goTo = function(section){
             $location.path('/'+section);
         }
+
+        $scope.onError = function(reason){
+            console.log(reason);
+            $scope.error = "Error!";
+        };
     })

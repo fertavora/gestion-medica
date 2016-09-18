@@ -120,7 +120,7 @@
                         <div class="col-lg-6">
                             <div class="input-group form-group has-feedback" ng-class="{'has-error' : formNuevoPaciente.pacienteCalle.$error.required && (formNuevoPaciente.$submitted || formNuevoPaciente.pacienteCalle.$touched)}">
                                 <span class="input-group-addon" id="pacienteCalleLabel">Calle</span>
-                                <input type="email" class="form-control" id="pacienteCalle" name="pacienteCalle" aria-describedby="pacienteCalleLabel" ng-model="paciente.domicilio.calle" ng-required="true">
+                                <input type="text" class="form-control" id="pacienteCalle" name="pacienteCalle" aria-describedby="pacienteCalleLabel" ng-model="paciente.domicilio.calle" ng-required="true">
                             </div>
                             <div ng-show="formNuevoPaciente.$submitted || formNuevoPaciente.pacienteCalle.$touched">
                                 <div ng-show="formNuevoPaciente.pacienteCalle.$error.required">
@@ -134,7 +134,7 @@
                                 <input type="number" class="form-control" id="pacienteCalleNro" name="pacienteCalleNro" aria-describedby="pacienteCalleNroLabel" ng-model="paciente.domicilio.nro" ng-required="true">
                             </div>
                             <div ng-show="formNuevoPaciente.$submitted || formNuevoPaciente.pacienteCalleNro.$touched">
-                                <div ng-show="formNuevoPaciente.pacienteEmail.$error.required">
+                                <div ng-show="formNuevoPaciente.pacienteCalleNro.$error.required">
                                     <span class="text-danger">Ingrese un número</span>
                                 </div>
                             </div>
@@ -156,14 +156,14 @@
                         <div class="col-lg-4">
                             <div class="input-group form-group">
                                 <span class="input-group-addon" id="pacienteProvinciaLabel">Provincia</span>
-                                <select class="form-control" ng-options="p.nombre for p in provincias" ng-model="paciente.domicilio.provincia" id="pacienteProvincia">
+                                <select class="form-control" ng-change="cambiarCiudades()" ng-options="p.nombre for p in provincias" ng-model="paciente.domicilio.provincia" id="pacienteProvincia">
                                 </select>
                             </div>
                         </div>
                         <div class="col-lg-4">
                             <div class="input-group form-group">
                                 <span class="input-group-addon" id="pacienteCiudadLabel">Ciudad</span>
-                                <select class="form-control" ng-model="paciente.domicilio.ciudad" id="pacienteCiudad">
+                                <select class="form-control" ng-options="c.nombre for c in ciudades" ng-model="paciente.domicilio.ciudad" id="pacienteCiudad">
                                 </select>
                             </div>
                         </div>
